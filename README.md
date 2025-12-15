@@ -5,6 +5,42 @@ This is the repository for the LinkedIn Learning course `Data Engineering with D
 
 Data Build Tool (dbt) has quickly become an essential tool in many data stacks ranging from startups to big tech for managing data transformations. In this course, data engineer Mark Freeman helps you get started with setting up, running, and managing a dbt project via the open-source offering dbt Core. Learn how to install dbt Core, configure an environment for dbt, create and manage a dbt project, and deploy a dbt project in production. If you’re a data professional tasked with implementing dbt within your organization, recently joined a team utilizing dbt and need to upskill, or just want to learn about dbt to increase your competitiveness within the data job market, check out this course.
 
+## 🚀 New Feature: AI Workflow Orchestration
+
+This repository now includes a production-ready AI workflow system that integrates **Notion** as a workflow management interface with **OpenAI** for automated prompt execution. Perfect for SaaS applications needing to industrialize AI workflows.
+
+### Key Features:
+- 📋 **Notion Integration** - Manage AI workflows directly in Notion databases
+- 🤖 **AI Execution** - Automated prompt execution via OpenAI API
+- 🔄 **Workflow Orchestration** - Coordinate complex AI workflows
+- ⚙️ **Production Ready** - Error handling, logging, and monitoring
+- 🔐 **Secure** - Environment-based configuration for API keys
+- 🚀 **GitHub Actions** - Automated workflow execution
+
+### Quick Links:
+- [📖 Full Documentation](ai_workflow/README.md) - Complete guide in French
+- [⚡ Quick Start Guide](QUICKSTART.md) - Get running in 5 minutes
+- [�� Integration Guide](ai_workflow/INTEGRATION.md) - Integrate with your SaaS app
+
+### Quick Start:
+```bash
+# Setup
+cd ai_workflow/config
+cp config.env.example config.env
+# Edit config.env with your API keys
+
+# Run
+cd ..
+python main.py validate  # Validate setup
+python main.py list      # List workflows
+python main.py run       # Execute workflows
+```
+
+See [QUICKSTART.md](QUICKSTART.md) for detailed setup instructions.
+
+---
+
+
 _See the readme file in the main branch for updated instructions and information._
 ## Instructions
 This repository has branches for each of the videos in the course. You can use the branch pop up menu in github to switch to a specific branch and take a look at the course at that stage, or you can add `/tree/BRANCH_NAME` to the URL to go to the branch you want to access.
