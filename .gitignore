@@ -3,3 +3,18 @@ node_modules
 .tmp
 npm-debug.log
 *logs/
+
+# DBT
+target/
+dbt_packages/
+logs/
+
+# AI Workflow configuration files with secrets
+ai_workflow/config/config.env
+*.log
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
