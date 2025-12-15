@@ -201,7 +201,9 @@ For more information, see README.md
     # Load configuration
     config_file = args.config
     if not config_file:
-        config_file = Path(__file__).parent.parent / "config" / "config.env"
+        config_file = Path(__file__).resolve().parent / "config" / "config.env"
+        if not config_file.exists():
+            config_file = None
     
     if config_file and Path(config_file).exists():
         config = Config(str(config_file))

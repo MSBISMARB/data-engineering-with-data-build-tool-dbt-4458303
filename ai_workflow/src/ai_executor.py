@@ -30,7 +30,7 @@ class AIPromptExecutor:
         if OpenAI is None:
             raise ImportError(
                 "openai is not installed. "
-                "Install it with: pip install openai"
+                "Install it with: pip install 'openai>=1.0.0'"
             )
         
         self.api_key = api_key or os.getenv("OPENAI_API_KEY")

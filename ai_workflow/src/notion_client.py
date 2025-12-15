@@ -29,7 +29,7 @@ class NotionWorkflowClient:
         if Client is None:
             raise ImportError(
                 "notion-client is not installed. "
-                "Install it with: pip install notion-client"
+                "Install it with: pip install 'notion-client>=2.0.0'"
             )
         
         self.api_key = api_key or os.getenv("NOTION_API_KEY")
@@ -172,7 +172,7 @@ class NotionWorkflowClient:
                     "rich_text": [
                         {
                             "text": {
-                                "content": result[:2000]  # Notion has text limits
+                                "content": result[:2000]  # Notion rich text property limit
                             }
                         }
                     ]

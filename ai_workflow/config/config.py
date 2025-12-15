@@ -26,7 +26,7 @@ class Config:
             if load_dotenv is None:
                 raise ImportError(
                     "python-dotenv is not installed. "
-                    "Install it with: pip install python-dotenv"
+                    "Install it with: pip install 'python-dotenv>=1.0.0'"
                 )
             load_dotenv(env_file)
     
