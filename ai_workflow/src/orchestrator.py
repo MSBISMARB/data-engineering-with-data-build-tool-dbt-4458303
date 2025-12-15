@@ -122,8 +122,8 @@ class WorkflowOrchestrator:
                         status="Failed",
                         result=f"Error: {str(e)}"
                     )
-                except:
-                    pass
+                except Exception as update_error:
+                    logger.error(f"Failed to update status: {str(update_error)}")
             
             return {
                 "workflow_id": workflow_id,

@@ -9,9 +9,9 @@ from typing import Dict, List, Optional, Any
 import json
 
 try:
-    import openai
+    from openai import OpenAI
 except ImportError:
-    openai = None
+    OpenAI = None
 
 logger = logging.getLogger(__name__)
 
@@ -27,7 +27,7 @@ class AIPromptExecutor:
             api_key: OpenAI API key. If not provided, reads from OPENAI_API_KEY env var.
             model: The model to use (default: gpt-3.5-turbo)
         """
-        if openai is None:
+        if OpenAI is None:
             raise ImportError(
                 "openai is not installed. "
                 "Install it with: pip install openai"
@@ -40,7 +40,7 @@ class AIPromptExecutor:
                 "Set OPENAI_API_KEY environment variable or pass api_key parameter."
             )
         
-        openai.api_key = self.api_key
+        self.client = OpenAI(api_key=self.api_key)
         self.model = model
         logger.info(f"AI Prompt Executor initialized with model: {model}")
     
@@ -91,7 +91,7 @@ class AIPromptExecutor:
             api_params.update(kwargs)
             
             logger.info(f"Executing prompt with model {self.model}")
-            response = openai.ChatCompletion.create(**api_params)
+            response = self.client.chat.completions.create(**api_params)
             
             result = {
                 "success": True,

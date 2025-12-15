@@ -6,6 +6,11 @@ import os
 from typing import Dict, Any
 from pathlib import Path
 
+try:
+    from dotenv import load_dotenv
+except ImportError:
+    load_dotenv = None
+
 
 class Config:
     """Configuration manager for AI Workflow."""
@@ -18,16 +23,12 @@ class Config:
             env_file: Path to .env file (optional)
         """
         if env_file and os.path.exists(env_file):
-            self._load_env_file(env_file)
-    
-    def _load_env_file(self, env_file: str):
-        """Load environment variables from file."""
-        with open(env_file, 'r') as f:
-            for line in f:
-                line = line.strip()
-                if line and not line.startswith('#') and '=' in line:
-                    key, value = line.split('=', 1)
-                    os.environ[key.strip()] = value.strip()
+            if load_dotenv is None:
+                raise ImportError(
+                    "python-dotenv is not installed. "
+                    "Install it with: pip install python-dotenv"
+                )
+            load_dotenv(env_file)
     
     @property
     def notion_api_key(self) -> str:
